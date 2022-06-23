@@ -1,7 +1,8 @@
-const express = require("express");
+const app = require("./app");
+const http = require("http");
 
-const app = express();
+const server = http.createServer(app);
 
-app.listen("3001", () => {
+server.listen("3001", () => {
   console.log("Server running on port 3001");
 });

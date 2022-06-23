@@ -32,12 +32,6 @@ booksRouter.delete("/:id", (req, res, next) => {
 booksRouter.post("/", (req, res, next) => {
   const { title, author, description } = req.body;
 
-  if (!title || !author || !description) {
-    return res.status(400).json({
-      error: "please add title, author and description",
-    });
-  }
-
   const book = new Book({
     title,
     author,

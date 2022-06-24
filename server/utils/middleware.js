@@ -5,7 +5,9 @@ const unknownEndpoint = (req, res) => {
 const errorHandler = (error, req, res, next) => {
   // this happens if we use a wrong form of id
   if (error.name === "CastError") {
-    return res.status(400).send({ error: "malformatted id" });
+    return res
+      .status(400)
+      .send({ error: "faulty id, not compatible with mongodb" });
   }
   // this happens if in our post request we dont give the proper values
   if (error.name === "ValidationError") {

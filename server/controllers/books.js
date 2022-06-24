@@ -46,4 +46,21 @@ booksRouter.post("/", (req, res, next) => {
     .catch((error) => next(error));
 });
 
+//update book
+booksRouter.put("/:id", (req, res, next) => {
+  const { title, author, description } = req.body;
+
+  const book = {
+    title,
+    author,
+    description,
+  };
+
+  Book.findByIdAndUpdate(req.params.id, book, { new: true })
+    .then((updatedBook) => {
+      res.json(updatedBook);
+    })
+    .catch((error) => next(error));
+});
+
 module.exports = booksRouter;

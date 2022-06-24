@@ -14,15 +14,11 @@ const App = () => {
       .get("http://localhost:3001/api/books")
       .then((res) => setBooks(res.data))
       .catch((error) => console.error(error));
-  }, [books]);
-
-  const handleSelectBook = (book: Book) => {
-    setSelectedBook(book);
-  };
+  }, [selectedBook]);
 
   return (
     <main>
-      <BookList books={books} handleSelectBook={handleSelectBook} />
+      <BookList books={books} setSelectedBook={setSelectedBook} />
       <FormikForm
         books={books}
         selectedBook={selectedBook}

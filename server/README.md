@@ -1,1 +1,2 @@
-# Express mongodb server for buutti full stack task
+# Buutti server side made with Express.js, Mongoose, MongoDB
+

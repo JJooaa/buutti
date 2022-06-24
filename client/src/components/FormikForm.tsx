@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { FormikProps } from "../util/types";
-import { handleDelete } from "../util/api";
+import ButtonGroup from "./ButtonGroup";
 
 const FormikForm = ({ books, selectedBook, setSelectedBook }: FormikProps) => {
   const initialValues = {
@@ -21,40 +21,33 @@ const FormikForm = ({ books, selectedBook, setSelectedBook }: FormikProps) => {
             setSubmitting(false);
           }}
         >
-          <Form>
-            <div className="form-inner">
-              <h1>Add a new book</h1>
-              <h2>Or change an existing one</h2>
+          {({ values }) => (
+            <Form>
+              <div className="form-inner">
+                <h1>Add a new book</h1>
+                <h2>Or change an existing one</h2>
 
-              <label htmlFor="title">Title</label>
-              <Field name="title" />
-              <ErrorMessage name="title" />
+                <label htmlFor="title">Title</label>
+                <Field name="title" />
+                <ErrorMessage name="title" />
 
-              <label htmlFor="title">Author</label>
-              <Field name="author" />
-              <ErrorMessage name="author" />
+                <label htmlFor="title">Author</label>
+                <Field name="author" />
+                <ErrorMessage name="author" />
 
-              <label htmlFor="title">Description</label>
-              <Field name="description" as="textarea" />
-              <ErrorMessage name="description" />
+                <label htmlFor="title">Description</label>
+                <Field name="description" as="textarea" />
+                <ErrorMessage name="description" />
 
-              <div className="button-group">
-                <button type="submit">Save New</button>
-                <button type="button">Save</button>
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleDelete(selectedBook!._id, setSelectedBook)
-                  }
-                >
-                  Delete
-                </button>
-                {books.length !== 0 && (
-                  <button onClick={() => setSelectedBook(null)}>Cancel</button>
-                )}
+                <ButtonGroup
+                  books={books}
+                  selectedBook={selectedBook}
+                  setSelectedBook={setSelectedBook}
+                  values={values}
+                />
               </div>
-            </div>
-          </Form>
+            </Form>
+          )}
         </Formik>
       ) : null}
     </>

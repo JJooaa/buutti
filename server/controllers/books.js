@@ -15,7 +15,7 @@ booksRouter.get("/:id", (req, res, next) => {
       if (book) {
         res.json(book);
       } else {
-        res.status(404).end();
+        res.status(404).json({ error: "not found" });
       }
     })
     .catch((error) => next(error));
@@ -30,13 +30,7 @@ booksRouter.delete("/:id", (req, res, next) => {
 
 // add new book
 booksRouter.post("/", (req, res, next) => {
-  const { title, author, description } = req.body;
-
-  const book = new Book({
-    title,
-    author,
-    description,
-  });
+  const book = new Book(req.body);
 
   book
     .save()
@@ -48,19 +42,13 @@ booksRouter.post("/", (req, res, next) => {
 
 //update book
 booksRouter.put("/:id", (req, res, next) => {
-  const { title, author, description } = req.body;
-
-  const book = {
-    title,
-    author,
-    description,
-  };
-
-  Book.findByIdAndUpdate(req.params.id, book, { new: true })
+  Book.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((updatedBook) => {
       res.json(updatedBook);
     })
-    .catch((error) => next(error));
+    .catch((error) => {
+      next(error);
+    });
 });
 
 module.exports = booksRouter;

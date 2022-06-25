@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "(cd client & npm install & cd ..) && (cd server & npm install & cd ..) && concurrently --kill-others \"cd client & npm start\" \"cd server & npm start\"",
+    "start": "(npm install) && (cd client & npm install & cd ..) && (cd server & npm install & cd ..) && concurrently --kill-others \"cd client & npm start\" \"cd server & npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/JJooaa/buutti/issues"
   },
-  "homepage": "https://github.com/JJooaa/buutti#readme"
+  "homepage": "https://github.com/JJooaa/buutti#readme",
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
 }

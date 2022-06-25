@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+span {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
 main {
   position: relative;
   display: flex;

@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { FormikProps } from "../util/types";
 import ButtonGroup from "./ButtonGroup";
+import { validationSchema } from "../util/formValidation";
 
 const FormikForm = ({ books, selectedBook, setSelectedBook }: FormikProps) => {
   const initialValues = {
@@ -15,6 +16,7 @@ const FormikForm = ({ books, selectedBook, setSelectedBook }: FormikProps) => {
       {books.length === 0 || selectedBook !== null ? (
         <Formik
           initialValues={initialValues}
+          validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
             axios.post("http://localhost:3001/api/books/", values);
             setSelectedBook(null);
@@ -29,15 +31,15 @@ const FormikForm = ({ books, selectedBook, setSelectedBook }: FormikProps) => {
 
                 <label htmlFor="title">Title</label>
                 <Field name="title" />
-                <ErrorMessage name="title" />
+                <ErrorMessage name="title" component="span" />
 
                 <label htmlFor="title">Author</label>
                 <Field name="author" />
-                <ErrorMessage name="author" />
+                <ErrorMessage name="author" component="span" />
 
                 <label htmlFor="title">Description</label>
                 <Field name="description" as="textarea" />
-                <ErrorMessage name="description" />
+                <ErrorMessage name="description" component="span" />
 
                 <ButtonGroup
                   books={books}

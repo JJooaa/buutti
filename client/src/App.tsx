@@ -6,7 +6,6 @@ import { Book } from "./util/types";
 
 const App = () => {
   const [books, setBooks] = useState([]);
-
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   useEffect(() => {
@@ -20,6 +19,7 @@ const App = () => {
     <main>
       <BookList books={books} setSelectedBook={setSelectedBook} />
       <FormikForm
+        setBooks={setBooks}
         books={books}
         selectedBook={selectedBook}
         setSelectedBook={setSelectedBook}

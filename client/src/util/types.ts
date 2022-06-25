@@ -5,8 +5,14 @@ export interface Book {
   _id: string;
 }
 
+export interface Values {
+  author?: string;
+  title?: string;
+  description?: string;
+}
+
 export interface BookListProps {
-  books: Array<Book>;
+  books: Book[];
   setSelectedBook: (book: Book) => void;
 }
 
@@ -16,18 +22,16 @@ export interface BookCardProps {
 }
 
 export interface FormikProps {
-  books: Array<Book>;
+  books: Book[];
   selectedBook: Book | null;
   setSelectedBook: (value: null) => void;
+  setBooks: (value: any) => void;
 }
 
 export interface ButtonGroupProps {
   books: Book[];
   setSelectedBook: (value: null) => void;
+  handleSubmit: any;
+  values: any;
   selectedBook: Book | null;
-  values: {
-    author?: string;
-    title?: string;
-    description?: string;
-  };
 }

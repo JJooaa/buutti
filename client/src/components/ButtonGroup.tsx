@@ -1,29 +1,46 @@
-import { handleUpdate, handleDelete } from "../util/api";
 import { ButtonGroupProps } from "../util/types";
+import { handleUpdate, handleDelete, handleAddBook } from "../util/api";
 
 const ButtonGroup = ({
   books,
   setSelectedBook,
-  selectedBook,
+  handleSubmit,
   values,
+  selectedBook,
 }: ButtonGroupProps) => {
+  const onClickAdd = () => {
+    handleSubmit(handleAddBook(values));
+  };
+
+  const onClickUpdate = () => {
+    handleSubmit(handleUpdate(selectedBook!._id, values));
+  };
+
+  const onClickDelete = () => {
+    handleSubmit(handleDelete(selectedBook!._id));
+  };
+
+  const onClickCancel = () => {
+    setSelectedBook(null);
+  };
+
   return (
     <div className="button-group">
-      <button type="submit">Save New</button>
-      <button
-        type="button"
-        onClick={() => handleUpdate(selectedBook!._id, setSelectedBook, values)}
-      >
-        Save
-      </button>
-      <button
-        type="button"
-        onClick={() => handleDelete(selectedBook!._id, setSelectedBook)}
-      >
-        Delete
+      <button type="button" onClick={onClickAdd}>
+        Save New
       </button>
       {books.length !== 0 && (
-        <button onClick={() => setSelectedBook(null)}>Cancel</button>
+        <>
+          <button type="button" onClick={onClickUpdate}>
+            Save
+          </button>
+
+          <button type="button" onClick={onClickDelete}>
+            Delete
+          </button>
+
+          <button onClick={onClickCancel}>Cancel</button>
+        </>
       )}
     </div>
   );

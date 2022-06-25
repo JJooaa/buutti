@@ -6,8 +6,12 @@ const BookList = ({ books, setSelectedBook }: BookListProps) => {
     <>
       <h1>Found {books.length} books</h1>
       <ul>
-        {books.map((book: Book) => (
-          <BookCard book={book} setSelectedBook={setSelectedBook} />
+        {books.map((book: Book, index: number) => (
+          <BookCard
+            key={book.title + index}
+            book={book}
+            setSelectedBook={setSelectedBook}
+          />
         ))}
       </ul>
     </>

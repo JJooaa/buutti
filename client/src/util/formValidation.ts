@@ -10,7 +10,7 @@ export const validationSchema = Yup.object().shape({
     .max(250, "Too long!")
     .required("Can't be empty"),
   author: Yup.string()
-    .min(10, "Minumum 3 characters")
+    .min(3, "Minumum 3 characters")
     .max(50, "Too long!")
     .required("Can't be empty"),
 });

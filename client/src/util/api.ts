@@ -1,26 +1,20 @@
 import axios from "axios";
+import { Values } from "./types";
 
-export const handleDelete = (
-  id: string,
-  setSelectedBook: (value: null) => void
-) => {
+export const handleDelete = async (id: string) => {
   axios
     .delete(`http://localhost:3001/api/books/${id}`)
-    .then(() => setSelectedBook(null))
     .catch((error) => console.error(error));
 };
 
-export const handleUpdate = (
-  id: string,
-  setSelectedBook: (value: null) => void,
-  values: {
-    author?: string;
-    title?: string;
-    description?: string;
-  }
-) => {
+export const handleUpdate = async (id: string, values: Values) => {
   axios
     .put(`http://localhost:3001/api/books/${id}`, values)
-    .then(() => setSelectedBook(null))
+    .catch((error) => console.error(error));
+};
+
+export const handleAddBook = async (values: Values) => {
+  await axios
+    .post("http://localhost:3001/api/books/", values)
     .catch((error) => console.error(error));
 };

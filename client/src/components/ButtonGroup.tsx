@@ -29,7 +29,7 @@ const ButtonGroup = ({
       <button type="button" onClick={onClickAdd}>
         Save New
       </button>
-       {/* If there are no books, buttons "save, delete and cancel" become obsolete */}
+      {/* If there are no books, buttons "save, delete and cancel" become obsolete */}
       {books.length !== 0 && (
         <>
           <button type="button" onClick={onClickUpdate}>

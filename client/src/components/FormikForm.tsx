@@ -4,6 +4,7 @@ import ButtonGroup from "./ButtonGroup";
 import { validationSchema } from "../util/formValidation";
 
 const FormikForm = ({ books, selectedBook, setSelectedBook }: FormikProps) => {
+  // if we click on a book it will select its values and display them in the form
   const initialValues = {
     title: "" || selectedBook?.title,
     author: "" || selectedBook?.author,
@@ -12,6 +13,7 @@ const FormikForm = ({ books, selectedBook, setSelectedBook }: FormikProps) => {
 
   return (
     <>
+      {/* If we dont have any books or we have a selectedBook, display the form with its values */}
       {books.length === 0 || selectedBook !== null ? (
         <Formik
           initialValues={initialValues}

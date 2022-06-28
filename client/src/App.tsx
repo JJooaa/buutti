@@ -8,6 +8,8 @@ const App = () => {
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
+  // everytime the selectedbook changes, we wanna rerender. the chage happens in formik form submission. using useEffect in this way is not the most optimal way.
+  // I would prefer other ways of fetching data.
   useEffect(() => {
     axios
       .get("http://localhost:3001/api/books")

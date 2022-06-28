@@ -22,6 +22,8 @@ Below you can find the necessary details about the app.
 
 ## Installation
 
+NOTE: YOU NEED NODE.JS INSTALLED ON YOUR MACHINE 
+
 1. Clone the project to your local system
 2. Head to the project root `/buutti`
 3. Run `npm start` at the root directory

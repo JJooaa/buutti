@@ -22,17 +22,22 @@ Below you can find the necessary details about the app.
 
 ## Installation
 
-NOTE: YOU NEED NODE.JS INSTALLED ON YOUR MACHINE 
+NOTE: YOU NEED NODE.JS INSTALLED ON YOUR MACHINE
 
 1. Clone the project to your local system
 2. Head to the project root `/buutti`
-3. Run `npm start` at the root directory
+3. Go to `/buutti/server` and create a `.env` file where we will save our mongodb connection uri
 
-- This will first install the necessary packages in `/buutti/server` and `/buutti/client` via the command `npm install`
+- Copy and paste the following into the `.env` file. `MONGODB_URI=mongodb+srv://username:password@buutti.gky0e6m.mongodb.net/bookApp?retryWrites=true&w=majority` 
+- You will have to replace username and password with the credentials I have provided to you via email.
+
+4. Head back to the project root at `/buutti` and run `npm start` at the root directory
+
+- This will first install the necessary packages in `/buutti/server` and `/buutti/client`
 - After installation it will concurrently run `/buutti/server` and `/buutti/client` via the command `npm start`
 
-4. App opens automatically at localhost:3000 in your favorite browser (if it doesn't open automatically, type it manually)
-5. You're good to go
+5. App opens automatically at localhost:3000 in your favorite browser (if it doesn't open automatically, type it manually)
+6. You're good to go
 
 ## Usage
 

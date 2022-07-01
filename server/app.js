@@ -4,12 +4,13 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const middleware = require("./utils/middleware");
 const booksRouter = require("./controllers/books");
-
+require("dotenv").config();
 // connect to mongodb database
+
+const url = process.env.MONGODB_URI;
+
 mongoose
-  .connect(
-    "mongodb+srv://test:test@buutti.gky0e6m.mongodb.net/bookApp?retryWrites=true&w=majority"
-  )
+  .connect(url)
   .then(() => {
     console.log("connected to MongoDB");
   })
